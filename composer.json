@@ -1,0 +1,15 @@
+{
+	"name": "gmo/console",
+	"description": "A library that eases the creation of beautiful and testable command line interfaces",
+	"require": {
+	},
+	"require-dev": {
+	},
+	"suggest": {
+	},
+	"autoload": {
+		"psr-4": {
+			"GMO\\Console\\": "src/"
+		}
+	}
+}
