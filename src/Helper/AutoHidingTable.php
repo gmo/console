@@ -333,7 +333,7 @@ class AutoHidingTable
 			$columnMarkupLength = Helper::strlenWithoutDecoration($this->output->getFormatter(), $columnMarkup);
 
 			if ($count > $column + 1) {
-				if ($markupLength + $columnMarkupLength + Helper::strlen($this->getHiddenSeparator()) < $this->consoleWidth) {
+				if ($markupLength + $columnMarkupLength + Helper::strlen($this->getHiddenCellWidth()) < $this->consoleWidth) {
 					$markup .= $columnMarkup;
 				} else {
 					$row[$column + 1] = $this->hiddenContent;
