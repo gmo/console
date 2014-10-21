@@ -7,7 +7,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -15,17 +14,15 @@
       <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
-          <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
+          <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
-          <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
+          <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
         </SOURCES>
       </library>
     </orderEntry>

@@ -5,7 +5,6 @@ use GMO\DependencyInjection\Container;
 use Pimple;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ContainerAwareCommand extends Command {
@@ -15,7 +14,7 @@ class ContainerAwareCommand extends Command {
 	/** @return Pimple */
 	public function getContainer() {
 		if ($this->container === null) {
-			throw new \LogicException('The container cannot be retrieved as the instance is not yet set.');
+			$this->container = $this->getDefaultContainer();
 		}
 		return $this->container;
 	}
@@ -28,19 +27,12 @@ class ContainerAwareCommand extends Command {
 		$this->container = $container;
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output) {
-		if (!$this->container) {
-			$this->container = $this->getDefaultContainer(new Container());
-		}
-	}
-
 	/**
 	 * Called if no container is given to the command
-	 * @param Container $container
 	 * @return Container
 	 */
-	protected function getDefaultContainer(Container $container) {
-		return $container;
+	protected function getDefaultContainer() {
+		return new Container();
 	}
 
 	/**
@@ -53,11 +45,7 @@ class ContainerAwareCommand extends Command {
 	 */
 	protected function callCommand(OutputInterface $output, $name, $args = array()) {
 		$args['command'] = $name;
-		$input = new ArrayInput($args);
 		$command = $this->getApplication()->find($name);
-		if ($command instanceof ContainerAwareCommand) {
-			$command->setContainer($this->getContainer());
-		}
-		return $command->run($input, $output);
+		return $command->run(new ArrayInput($args), $output);
 	}
 }

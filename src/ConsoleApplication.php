@@ -2,9 +2,16 @@
 namespace GMO\Console;
 
 use Symfony\Component\Console\Application;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Console\Command\Command;
 
 class ConsoleApplication extends Application {
+
+	public function add(Command $command) {
+		if ($command instanceof ContainerAwareCommand) {
+			$command->setContainer($this->container);
+		}
+		return parent::add($command);
+	}
 
 	/**
 	 * Constructor.
@@ -15,11 +22,9 @@ class ConsoleApplication extends Application {
 	 * @api
 	 */
 	public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN', \Pimple $container = null) {
+		$this->container = $container;
 		parent::__construct($name, $version);
-		if ($container) {
-			$dispatcher = new EventDispatcher();
-			$dispatcher->addSubscriber(new ContainerAwareCommandSubscriber($container));
-			$this->setDispatcher($dispatcher);
-		}
 	}
+
+	private $container;
 }
