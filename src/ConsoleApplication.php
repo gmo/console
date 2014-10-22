@@ -51,11 +51,11 @@ class ConsoleApplication extends Application {
 	 * Reads the composer lock file based on the project directory
 	 * and parses the version for the specified package name.
 	 *
-	 * @param string $projectDir
 	 * @param string $packageName
+	 * @param string $projectDir
 	 * @return null|string
 	 */
-	protected static function findPackageVersion($projectDir, $packageName) {
+	protected static function findPackageVersion($packageName, $projectDir) {
 		$composerFile = file_exists("$projectDir/vendor") ?
 			"$projectDir/composer.lock" : "$projectDir/../../../composer.lock";
 		if (!file_exists($composerFile)) {
