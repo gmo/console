@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="GMO\Console" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gmo/common" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
@@ -13,15 +14,17 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/gmo/common" />
           <root url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/gmo/common" />
           <root url="file://$MODULE_DIR$/vendor/gmo/dependency-injection" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/pimple/pimple" />
         </SOURCES>
       </library>

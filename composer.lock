@@ -4,8 +4,46 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "139b18af28caf303292737d2bed434fb",
+    "hash": "0fa4a485b3fe20662ed26e07f8bbcd22",
     "packages": [
+        {
+            "name": "gmo/common",
+            "version": "v1.22.0",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:gmodev/common-library.git",
+                "reference": "cca47abbc2aa4414f34bab118a2ae86dffed83ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://composer.gmodev.com/dist/gmo-common-v1.22.0-e88c40.zip",
+                "reference": "cca47abbc2aa4414f34bab118a2ae86dffed83ba",
+                "shasum": "1de158a83f119fa6bc46d7eb0984d88c345ad9a3"
+            },
+            "require-dev": {
+                "monolog/monolog": "~1.6",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "1.0.0"
+            },
+            "suggest": {
+                "monolog/monolog": "Provides serializable formatter",
+                "psr/log": "Provides a basic console logger for PSR-3 interface"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GMO\\Common\\": "src/",
+                    "GMO\\TestHelper\\": "TestHelper/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "": "tests/"
+                }
+            },
+            "description": "A library for common code",
+            "time": "2014-10-21 17:02:29"
+        },
         {
             "name": "gmo/dependency-injection",
             "version": "v1.0.0",
