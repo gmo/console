@@ -19,6 +19,10 @@ class ContainerAwareCommand extends Command {
 		return $this->container;
 	}
 
+	public function getService($name) {
+		return $this->getContainer()->offsetGet($name);
+	}
+
 	/**
 	 * Gets the application instance for this command.
 	 * @param Pimple $container
