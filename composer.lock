@@ -4,30 +4,37 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0fa4a485b3fe20662ed26e07f8bbcd22",
+    "hash": "cfd8dbb108e37e63d829fc77d982068a",
     "packages": [
         {
             "name": "gmo/common",
-            "version": "v1.22.0",
+            "version": "v1.24.5",
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:gmodev/common-library.git",
-                "reference": "cca47abbc2aa4414f34bab118a2ae86dffed83ba"
+                "reference": "54da694794034c2a363a1fada680ac4afa9f73cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://composer.gmodev.com/dist/gmo-common-v1.22.0-e88c40.zip",
-                "reference": "cca47abbc2aa4414f34bab118a2ae86dffed83ba",
-                "shasum": "1de158a83f119fa6bc46d7eb0984d88c345ad9a3"
+                "url": "http://composer.gmodev.com/dist/gmo-common-v1.24.5-4b4c17.zip",
+                "reference": "54da694794034c2a363a1fada680ac4afa9f73cf",
+                "shasum": "89b7e038cba3ca02e0244dcc44837033bee011a3"
+            },
+            "require": {
+                "symfony/yaml": "~2.5"
             },
             "require-dev": {
                 "monolog/monolog": "~1.6",
                 "phpunit/phpunit": "3.7.*",
-                "psr/log": "1.0.0"
+                "psr/log": "1.0.0",
+                "silex/silex": "~1.0",
+                "twig/twig": "~1.8"
             },
             "suggest": {
                 "monolog/monolog": "Provides serializable formatter",
-                "psr/log": "Provides a basic console logger for PSR-3 interface"
+                "psr/log": "Provides a basic console logger for PSR-3 interface",
+                "silex/silex": "Provides twig responses",
+                "twig/twig": "Provides twig responses"
             },
             "type": "library",
             "autoload": {
@@ -42,7 +49,7 @@
                 }
             },
             "description": "A library for common code",
-            "time": "2014-10-21 17:02:29"
+            "time": "2014-12-02 21:11:45"
         },
         {
             "name": "gmo/dependency-injection",
@@ -120,17 +127,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.5",
+            "version": "v2.6.1",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "ca053eaa031c93afb68a71e4eb1f4168dfd4a661"
+                "reference": "ef825fd9f809d275926547c9e57cbf14968793e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/ca053eaa031c93afb68a71e4eb1f4168dfd4a661",
-                "reference": "ca053eaa031c93afb68a71e4eb1f4168dfd4a661",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/ef825fd9f809d275926547c9e57cbf14968793e8",
+                "reference": "ef825fd9f809d275926547c9e57cbf14968793e8",
                 "shasum": ""
             },
             "require": {
@@ -138,16 +145,18 @@
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1"
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/process": "~2.1"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
-                "symfony/event-dispatcher": ""
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -171,10 +180,97 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-25 09:53:56"
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/3346fc090a3eb6b53d408db2903b241af51dcb20",
+                "reference": "3346fc090a3eb6b53d408db2903b241af51dcb20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 20:19:20"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "stecman/symfony-console-completion",
+            "version": "0.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stecman/symfony-console-completion.git",
+                "reference": "2bf3ddcaf31db1f0622a7db29bfc85fbc776bdaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/2bf3ddcaf31db1f0622a7db29bfc85fbc776bdaf",
+                "reference": "2bf3ddcaf31db1f0622a7db29bfc85fbc776bdaf",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stecman\\Component\\Symfony\\Console\\BashCompletion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Holdaway",
+                    "email": "stephen@stecman.co.nz"
+                }
+            ],
+            "description": "Automatic BASH completion for Symfony Console Component based applications.",
+            "time": "2014-11-18 03:19:13"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

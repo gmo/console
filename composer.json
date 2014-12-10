@@ -6,6 +6,9 @@
 		"gmo/dependency-injection": "~1.0",
 		"symfony/console": "~2.5"
 	},
+	"require-dev": {
+		"stecman/symfony-console-completion": "~0.4"
+	},
 	"autoload": {
 		"psr-4": {
 			"GMO\\Console\\": "src/"

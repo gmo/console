@@ -2,6 +2,7 @@
 namespace GMO\Console;
 
 use GMO\Common\Collections\ArrayCollection;
+use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 
@@ -33,6 +34,14 @@ class ConsoleApplication extends Application {
 	public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN', \Pimple $container = null) {
 		$this->container = $container;
 		parent::__construct($name, $version);
+	}
+
+	protected function getDefaultCommands() {
+		$commands = parent::getDefaultCommands();
+		if (class_exists('\Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand')) {
+			$commands[] = new CompletionCommand();
+		}
+		return $commands;
 	}
 
 	/**
