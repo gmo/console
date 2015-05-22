@@ -8,6 +8,7 @@ https://bitbucket.org/gmodev/console-library/branches/compare/v2.0.0..v1.0.0
 
  * Fixed console events not getting called with `callCommand` shortcut
  * Removed/ignoring composer.lock file
+ * Removed most project files. Ignoring all by default
 
 * 2.2.0 (2014-12-10)
 
