@@ -4,6 +4,11 @@ CHANGELOG
 To get the diff between two versions, go to 
 https://bitbucket.org/gmodev/console-library/branches/compare/v2.0.0..v1.0.0
 
+* 2.2.1 (2015-05-22)
+
+ * Fixed console events not getting called with `callCommand` shortcut
+
+
 * 2.2.0 (2014-12-10)
 
  * Added bash completion support

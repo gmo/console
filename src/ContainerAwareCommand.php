@@ -48,8 +48,8 @@ class ContainerAwareCommand extends Command {
 	 * @throws \Exception
 	 */
 	protected function callCommand(OutputInterface $output, $name, $args = array()) {
-		$args['command'] = $name;
-		$command = $this->getApplication()->find($name);
-		return $command->run(new ArrayInput($args), $output);
+		$args = array_merge(array('command' => $name), $args);
+		$app = $this->getApplication();
+		return $app->doRun(new ArrayInput($args), $output);
 	}
 }
