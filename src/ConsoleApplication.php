@@ -2,6 +2,7 @@
 namespace GMO\Console;
 
 use GMO\Common\Collections\ArrayCollection;
+use GMO\Console\Helper\ContainerHelper;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -42,6 +43,13 @@ class ConsoleApplication extends Application {
 			$commands[] = new CompletionCommand();
 		}
 		return $commands;
+	}
+
+	protected function getDefaultHelperSet()
+	{
+		$helperSet = parent::getDefaultHelperSet();
+		$helperSet->set(new ContainerHelper($this->container));
+		return $helperSet;
 	}
 
 	/**
