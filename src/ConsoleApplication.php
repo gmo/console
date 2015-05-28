@@ -73,6 +73,9 @@ class ConsoleApplication extends Application {
 	 * @return null|string
 	 */
 	protected static function findPackageVersion($packageName, $projectDir) {
+		if ($packageName === null || $projectDir === null) {
+			return null;
+		}
 		$composerFile = file_exists("$projectDir/vendor") ?
 			"$projectDir/composer.lock" : "$projectDir/../../../composer.lock";
 		if (!file_exists($composerFile)) {
