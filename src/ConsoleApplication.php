@@ -35,6 +35,9 @@ class ConsoleApplication extends Application {
 	public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN', \Pimple $container = null) {
 		$this->container = $container;
 		parent::__construct($name, $version);
+		if ($container) {
+			$this->getHelperSet()->set(new Helper\ContainerHelper($container));
+		}
 	}
 
 	protected function getDefaultCommands() {
