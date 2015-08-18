@@ -45,6 +45,8 @@ class ConsoleApplication extends Application {
 		if (class_exists('\Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand')) {
 			$commands[] = new CompletionCommand();
 		}
+		$commands[] = new ShellCommand();
+
 		return $commands;
 	}
 
