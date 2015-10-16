@@ -7,6 +7,8 @@
 		"symfony/console": "~2.5"
 	},
 	"require-dev": {
+		"silex/silex": "^1.0",
+		"sorien/silex-pimple-dumper": "^1.0",
 		"stecman/symfony-console-completion": "~0.4"
 	},
 	"autoload": {
