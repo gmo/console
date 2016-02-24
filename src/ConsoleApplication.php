@@ -17,10 +17,16 @@ class ConsoleApplication extends Application {
 	}
 
 	public function getVersion() {
-		if (!parent::getVersion() && $this->getPackageName() && $this->getProjectDirectory()) {
-			$version = $this->findPackageVersion($this->getPackageName(), $this->getProjectDirectory());
-			$this->setVersion($version ?: 'development');
+		if (parent::getVersion() === null && $this->getProjectDirectory()) {
+			if ($this->getPackageName()) {
+				$version = $this->findPackageVersion($this->getPackageName(), $this->getProjectDirectory());
+			} else {
+				$version = $this->findGitVersion($this->getProjectDirectory());
+			}
+
+			$this->setVersion($version ?: 'UNKNOWN');
 		}
+
 		return parent::getVersion();
 	}
 
@@ -32,7 +38,7 @@ class ConsoleApplication extends Application {
 	 * @param \Pimple|null $container The dependency container
 	 * @api
 	 */
-	public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN', \Pimple $container = null) {
+	public function __construct($name = 'UNKNOWN', $version = null, \Pimple $container = null) {
 		$this->container = $container;
 		parent::__construct($name, $version);
 		if ($container) {
@@ -99,6 +105,20 @@ class ConsoleApplication extends Application {
 
 		$version = ltrim($package->get('version'), 'v');
 		return $version;
+	}
+
+	protected static function findGitVersion($projectDir) {
+		$branch = static::revParse('--abbrev-ref HEAD', $projectDir);
+
+		if (empty($branch)) {
+			return null;
+		}
+
+		return $branch . ' ' . static::revParse('--short HEAD', $projectDir);
+	}
+
+	protected static function revParse($args, $projectDir) {
+		return trim(shell_exec("cd $projectDir && git rev-parse $args 2> /dev/null"));
 	}
 
 	private $container;
