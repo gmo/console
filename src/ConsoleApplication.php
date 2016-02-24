@@ -73,7 +73,7 @@ class ConsoleApplication extends Application {
 	 * Gets the project directory. Used in determining version.
 	 * @return string|null
 	 */
-	protected function getProjectDirectory() { return $this->projectDir; }
+	public function getProjectDirectory() { return $this->projectDir; }
 
 	/**
 	 * Set the project directory. Used in determining version.
@@ -82,7 +82,7 @@ class ConsoleApplication extends Application {
 	 *
 	 * @return $this
 	 */
-	protected function setProjectDirectory($dir) {
+	public function setProjectDirectory($dir) {
 		$this->projectDir = $dir;
 
 		return $this;
