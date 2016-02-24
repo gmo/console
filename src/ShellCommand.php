@@ -17,6 +17,10 @@ class ShellCommand extends Command {
 		;
 	}
 
+	public function isEnabled() {
+		return class_exists('\Symfony\Component\Console\Shell');
+	}
+
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		$shell = new Shell($this->getApplication());
 		$shell->run();
