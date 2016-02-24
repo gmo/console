@@ -73,7 +73,20 @@ class ConsoleApplication extends Application {
 	 * Gets the project directory. Used in determining version.
 	 * @return string|null
 	 */
-	protected function getProjectDirectory() { return null; }
+	protected function getProjectDirectory() { return $this->projectDir; }
+
+	/**
+	 * Set the project directory. Used in determining version.
+	 *
+	 * @param string $dir
+	 *
+	 * @return $this
+	 */
+	protected function setProjectDirectory($dir) {
+		$this->projectDir = $dir;
+
+		return $this;
+	}
 
 	/**
 	 * Reads the composer lock file based on the project directory
@@ -122,4 +135,5 @@ class ConsoleApplication extends Application {
 	}
 
 	private $container;
+	private $projectDir;
 }
