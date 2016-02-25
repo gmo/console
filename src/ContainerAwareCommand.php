@@ -8,6 +8,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @property Pimple $container
+ */
 class ContainerAwareCommand extends Command
 {
     /** @var Pimple|null */
@@ -23,6 +26,13 @@ class ContainerAwareCommand extends Command
         return $this->container;
     }
 
+    /**
+     * Returns $container[$name]
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
     public function getService($name)
     {
         return $this->getContainer()->offsetGet($name);
@@ -64,5 +74,20 @@ class ContainerAwareCommand extends Command
         $app = $this->getApplication();
 
         return $app->doRun(new ArrayInput($args), $output);
+    }
+
+    /**
+     * Magic getter for $container property to support editor code completion.
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if ($name === 'container') {
+            return $this->getContainer();
+        }
+        throw new \BadMethodCallException();
     }
 }
