@@ -2,6 +2,7 @@
 
 namespace GMO\Console;
 
+use Silex;
 use Sorien\Provider\PimpleDumpProvider;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,8 +25,11 @@ class PimpleDumpCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \Silex\Application $app */
         $app = $this->getContainer();
+        if (!$app instanceof Silex\Application) {
+            throw new \InvalidArgumentException('Container given needs to be an instance of Silex\Application');
+        }
+
         $app['debug'] = true;
 
         $dumper = new PimpleDumpProvider();
