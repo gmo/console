@@ -3,7 +3,6 @@
 namespace GMO\Console;
 
 use GMO\Common\Collections\ArrayCollection;
-use GMO\Console\Helper\ContainerHelper;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -30,9 +29,10 @@ class ConsoleApplication extends Application
      */
     public function __construct($name = 'UNKNOWN', $version = null, \Pimple $container = null)
     {
-        $this->container = $container;
         parent::__construct($name, $version);
+
         if ($container) {
+            $this->container = $container;
             $this->getHelperSet()->set(new Helper\ContainerHelper($container));
         }
     }
@@ -42,7 +42,7 @@ class ConsoleApplication extends Application
      */
     public function add(Command $command)
     {
-        if ($command instanceof ContainerAwareCommand) {
+        if ($this->container && $command instanceof ContainerAwareCommand) {
             $command->setContainer($this->container);
         }
 
@@ -79,17 +79,6 @@ class ConsoleApplication extends Application
         $commands[] = new ShellCommand();
 
         return $commands;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getDefaultHelperSet()
-    {
-        $helperSet = parent::getDefaultHelperSet();
-        $helperSet->set(new ContainerHelper($this->container));
-
-        return $helperSet;
     }
 
     /**
