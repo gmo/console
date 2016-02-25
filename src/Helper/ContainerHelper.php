@@ -1,4 +1,5 @@
 <?php
+
 namespace GMO\Console\Helper;
 
 use Symfony\Component\Console\Helper\Helper;
@@ -8,21 +9,46 @@ use Symfony\Component\Console\Helper\Helper;
  */
 class ContainerHelper extends Helper
 {
-	protected $container;
+    /** @var \Pimple */
+    protected $container;
 
-	public function __construct(\Pimple $container) {
-		$this->container = $container;
-	}
+    /**
+     * Constructor.
+     *
+     * @param \Pimple $container
+     */
+    public function __construct(\Pimple $container)
+    {
+        $this->container = $container;
+    }
 
-	public function getContainer() {
-		return $this->container;
-	}
+    /**
+     * Returns container.
+     * 
+     * @return \Pimple
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
 
-	public function getService($name) {
-		return $this->container[$name];
-	}
+    /**
+     * Returns service from container by name.
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function getService($name)
+    {
+        return $this->container[$name];
+    }
 
-	public function getName() {
-		return 'container';
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'container';
+    }
 }
