@@ -77,6 +77,7 @@ class ConsoleApplication extends Application
             $commands[] = new CompletionCommand();
         }
         $commands[] = new ShellCommand();
+        $commands[] = new PimpleDumpCommand();
 
         return $commands;
     }
