@@ -2,21 +2,20 @@
 
 namespace GMO\Console;
 
-use GMO\DependencyInjection\Container;
-use Pimple;
+use ArrayAccess;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @property Pimple $container
+ * @property ArrayAccess $container
  */
 class ContainerAwareCommand extends Command
 {
-    /** @var Pimple|null */
+    /** @var ArrayAccess|null */
     private $container;
 
-    /** @return Pimple */
+    /** @return ArrayAccess */
     public function getContainer()
     {
         if ($this->container === null) {
@@ -41,7 +40,7 @@ class ContainerAwareCommand extends Command
     /**
      * Gets the application instance for this command.
      *
-     * @param Pimple $container
+     * @param ArrayAccess $container
      */
     public function setContainer($container)
     {
@@ -51,11 +50,11 @@ class ContainerAwareCommand extends Command
     /**
      * Called if no container is given to the command
      *
-     * @return Container
+     * @return ArrayAccess
      */
     protected function getDefaultContainer()
     {
-        return new Container();
+        return new \ArrayObject();
     }
 
     /**

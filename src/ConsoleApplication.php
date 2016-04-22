@@ -2,6 +2,7 @@
 
 namespace GMO\Console;
 
+use ArrayAccess;
 use GMO\Common\Collections\ArrayCollection;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Component\Console\Application;
@@ -15,7 +16,7 @@ use Symfony\Component\Console\Command\Command;
  */
 class ConsoleApplication extends Application
 {
-    /** @var \Pimple|null */
+    /** @var ArrayAccess|null */
     private $container;
     /** @var string|null */
     private $projectDir;
@@ -23,11 +24,11 @@ class ConsoleApplication extends Application
     /**
      * Constructor.
      *
-     * @param string       $name      The name of the application
-     * @param string       $version   The version of the application
-     * @param \Pimple|null $container The dependency container
+     * @param string           $name      The name of the application
+     * @param string           $version   The version of the application
+     * @param ArrayAccess|null $container The dependency container
      */
-    public function __construct($name = 'UNKNOWN', $version = null, \Pimple $container = null)
+    public function __construct($name = 'UNKNOWN', $version = null, $container = null)
     {
         parent::__construct($name, $version);
 
