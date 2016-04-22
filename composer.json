@@ -1,5 +1,6 @@
 {
 	"name": "gmo/console",
+	"license": "MIT",
 	"description": "A library that eases the creation of beautiful and testable command line interfaces",
 	"require": {
 		"gmo/common": "~1.22",
