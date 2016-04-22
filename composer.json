@@ -21,8 +21,5 @@
 		"branch-alias": {
 			"dev-master": "2.2-dev"
 		}
-	},
-	"repositories": [
-		{ "type": "composer", "url": "composer.gmodev.com" }
-	]
+	}
 }
