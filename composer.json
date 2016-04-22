@@ -3,7 +3,6 @@
 	"description": "A library that eases the creation of beautiful and testable command line interfaces",
 	"require": {
 		"gmo/common": "~1.22",
-		"gmo/dependency-injection": "~1.0",
 		"php": ">=5.3",
 		"symfony/console": "^2.5 || ^3.0"
 	},
