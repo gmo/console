@@ -5,7 +5,7 @@
 		"gmo/common": "~1.22",
 		"gmo/dependency-injection": "~1.0",
 		"php": ">=5.3",
-		"symfony/console": "~2.5"
+		"symfony/console": "^2.5 || ^3.0"
 	},
 	"require-dev": {
 		"silex/silex": "^1.0",
