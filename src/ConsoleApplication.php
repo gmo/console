@@ -30,10 +30,15 @@ class ConsoleApplication extends Application
      */
     public function __construct($name = 'UNKNOWN', $version = null, $container = null)
     {
+        if ($container) {
+            // Needed so default commands get container if they are container aware.
+            $this->container = $container;
+        }
+
         parent::__construct($name, $version);
 
         if ($container) {
-            $this->container = $container;
+            // Needs to be after parent constructor
             $this->getHelperSet()->set(new Helper\ContainerHelper($container));
         }
     }
