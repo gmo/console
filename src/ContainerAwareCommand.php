@@ -8,14 +8,14 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @property ArrayAccess $container
+ * @property \Pimple|\Pimple\Container $container
  */
 class ContainerAwareCommand extends Command
 {
-    /** @var ArrayAccess|null */
+    /** @var \Pimple|\Pimple\Container|null */
     private $container;
 
-    /** @return ArrayAccess */
+    /** @return \Pimple|\Pimple\Container */
     public function getContainer()
     {
         if ($this->container === null) {
@@ -40,7 +40,7 @@ class ContainerAwareCommand extends Command
     /**
      * Gets the application instance for this command.
      *
-     * @param ArrayAccess $container
+     * @param \Pimple|\Pimple\Container $container
      */
     public function setContainer($container)
     {

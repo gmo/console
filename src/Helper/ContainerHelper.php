@@ -2,7 +2,6 @@
 
 namespace GMO\Console\Helper;
 
-use ArrayAccess;
 use Symfony\Component\Console\Helper\Helper;
 
 /**
@@ -10,13 +9,13 @@ use Symfony\Component\Console\Helper\Helper;
  */
 class ContainerHelper extends Helper
 {
-    /** @var ArrayAccess */
+    /** @var \Pimple|\Pimple\Container */
     protected $container;
 
     /**
      * Constructor.
      *
-     * @param ArrayAccess $container
+     * @param \Pimple|\Pimple\Container $container
      */
     public function __construct($container)
     {
@@ -26,7 +25,7 @@ class ContainerHelper extends Helper
     /**
      * Returns container.
      * 
-     * @return ArrayAccess
+     * @return \Pimple|\Pimple\Container
      */
     public function getContainer()
     {
