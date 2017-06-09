@@ -1,25 +1,25 @@
 {
-	"name": "gmo/console",
-	"license": "MIT",
-	"description": "A library that eases the creation of beautiful and testable command line interfaces",
-	"require": {
-		"gmo/common": "~1.22",
-		"php": ">=5.3",
-		"symfony/console": "^2.5 || ^3.0"
-	},
-	"require-dev": {
-		"silex/silex": "^1.0",
-		"sorien/silex-pimple-dumper": "^1.0",
-		"stecman/symfony-console-completion": "~0.4"
-	},
-	"autoload": {
-		"psr-4": {
-			"GMO\\Console\\": "src/"
-		}
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "2.2-dev"
-		}
-	}
+    "name": "gmo/console",
+    "license": "MIT",
+    "description": "A library that eases the creation of beautiful and testable command line interfaces",
+    "require": {
+        "gmo/common": "~1.22",
+        "php": ">=5.3",
+        "symfony/console": "^2.5 || ^3.0"
+    },
+    "require-dev": {
+        "silex/silex": "^1.0",
+        "sorien/silex-pimple-dumper": "^1.0",
+        "stecman/symfony-console-completion": "~0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "GMO\\Console\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.2-dev"
+        }
+    }
 }
