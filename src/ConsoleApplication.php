@@ -2,7 +2,6 @@
 
 namespace GMO\Console;
 
-use GMO\Common\Collections\ArrayCollection;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -142,19 +141,19 @@ class ConsoleApplication extends Application
         }
         $composer = json_decode(file_get_contents($composerFile), true);
 
-        $packages = ArrayCollection::create($composer['packages'])
-            ->filter(
-                function ($package) use ($packageName) {
-                    return $package['name'] === $packageName;
-                }
-            )
-        ;
-        if ($packages->isEmpty()) {
+        $packages = array_filter($composer['packages'], function ($package) use ($packageName) {
+            return $package['name'] === $packageName;
+        });
+        if (!$packages) {
             return null;
         }
-        $package = ArrayCollection::create($packages->first());
+        $package = reset($packages);
 
-        $version = ltrim($package->get('version'), 'v');
+        if (!isset($package['version'])) {
+            return null;
+        }
+
+        $version = ltrim($package['version'], 'v');
 
         return $version;
     }
